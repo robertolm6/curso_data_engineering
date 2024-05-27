@@ -1,10 +1,3 @@
-
-{{
-  config(
-    materialized='view'
-  )
-}}
-
 with 
 
 source_products as (
@@ -20,8 +13,8 @@ renamed_products as (
         price,
         name,
         inventory,
-        _fivetran_deleted as deleted,
-        _fivetran_synced as date_load
+        _fivetran_deleted,
+        _fivetran_synced
 
     from source_products
 

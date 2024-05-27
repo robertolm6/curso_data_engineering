@@ -1,10 +1,3 @@
-
-{{
-  config(
-    materialized='view'
-  )
-}}
-
 with 
 
 source_users as (
@@ -25,8 +18,8 @@ renamed_users as (
         total_orders,
         first_name,
         email,
-        _fivetran_deleted as deleted,
-        _fivetran_synced as date_load
+        _fivetran_deleted,
+        _fivetran_synced
 
     from source_users
 
