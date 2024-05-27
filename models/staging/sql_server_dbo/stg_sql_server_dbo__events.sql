@@ -1,11 +1,5 @@
-
-{{
-  config(
-    materialized='view'
-  )
-}}
-
 with 
+
 source_events as (
 
     select * from {{ source('sql_server_dbo', 'events') }}
@@ -23,8 +17,8 @@ renamed_events as (
         session_id,
         created_at,
         order_id,
-        _fivetran_deleted as date_load,
-        _fivetran_synced as deleted
+        _fivetran_deleted,
+        _fivetran_synced
 
     from source_events
 

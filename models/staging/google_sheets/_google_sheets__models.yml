@@ -1,16 +1,27 @@
 version: 2
 
 models:
+  - name: stg_google_sheets__budget
+    description: ""
+    columns:
+      - name: _row
+        data_type: number
+        description: ""
 
-      - name: stg_google_sheets__budget
-        columns:
-          - name: _row
-          - name: product_id
-          - name: quantity
-          - name: month
-          - name: date_load
-      - name: stg_google_sheets__x
-        columns:
-          - name: product_id
-          - name: quantity
-          - name: month
+      - name: product_id
+        data_type: varchar
+        description: ""
+
+      - name: quantity
+        data_type: number
+        description: ""
+
+      - name: month
+        data_type: date
+        description: ""
+
+      - name: date_load
+        data_type: timestamp_tz
+        description: ""
+
+#Añadir descripciones, tests y contratos aunque esto último tendría más sentido añadirlos en la capa gold.

@@ -1,28 +1,27 @@
 version: 2
 
 sources:
-
-  - name: google_sheets # name of the source 
-    schema: google_sheets # this is the schema our raw data lives in
-    database: ALUMNO15DEVBRONZEDB # this is the name of our database
-
-    quoting:
-      database: false
-      schema: false
-      identifier: false
-
-    freshness:
-      warn_after: {count: 24, period: hour}
-      error_after: {count: 48, period: hour}
-
+  - name: google_sheets
+    description: ""
+    database: alumno15devbronzedb
+    schema: google_sheets
     tables:
-
       - name: budget
-        loaded_at_field: _fivetran_synced
+        description: ""
         columns:
           - name: _row
-          - name: product_id
+            data_type: number
+            description: ""
           - name: quantity
+            data_type: number
+            description: ""
           - name: month
+            data_type: date
+            description: ""
+          - name: product_id
+            data_type: varchar
+            description: ""
           - name: _fivetran_synced
+            data_type: timestamp_tz
+            description: ""
         

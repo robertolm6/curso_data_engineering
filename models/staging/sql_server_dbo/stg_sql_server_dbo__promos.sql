@@ -1,10 +1,3 @@
-
-{{
-  config(
-    materialized='view'
-  )
-}}
-
 with 
 
 source_promos as (
@@ -19,8 +12,8 @@ renamed_promos as (
         promo_id,
         discount,
         status,
-        _fivetran_deleted as deleted,
-        _fivetran_synced as date_load
+        _fivetran_deleted,
+        _fivetran_synced
 
     from source_promos
 

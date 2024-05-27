@@ -1,10 +1,3 @@
-
-{{
-  config(
-    materialized='view'
-  )
-}}
-
 with 
 
 source_orders as (
@@ -29,8 +22,8 @@ renamed_orders as (
         delivered_at,
         tracking_id,
         status,
-        _fivetran_deleted as deleted,
-        _fivetran_synced as date_load
+        _fivetran_deleted,
+        _fivetran_synced
 
     from source_orders
 
