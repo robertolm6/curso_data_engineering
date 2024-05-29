@@ -66,6 +66,11 @@ models:
       - name: order_id
         data_type: varchar
         description: ""
+        tests:
+          #- relationships:
+          #    to: ref('stg_sql_server_dbo__orders')
+          #    field: order_id
+          - not_null
 
       - name: _fivetran_deleted
         data_type: boolean
@@ -86,9 +91,11 @@ models:
         data_type: varchar
         description: ""
 
-      - name: shipping_cost
+      - name: shipping_cost_dollars
         data_type: float
         description: ""
+        tests:
+          - positive_values
 
       - name: address_id
         data_type: varchar
@@ -106,7 +113,7 @@ models:
         data_type: timestamp_tz
         description: ""
 
-      - name: order_cost
+      - name: order_cost_dollars
         data_type: float
         description: ""
 
@@ -114,7 +121,7 @@ models:
         data_type: varchar
         description: ""
 
-      - name: order_total
+      - name: order_total_dollars
         data_type: float
         description: ""
 
