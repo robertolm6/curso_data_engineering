@@ -1,0 +1,65 @@
+unit_tests:
+  - name: test_is_valid_email
+    description: "Check if email is valid"
+    model: users_validation
+    given:
+      - input: ref('stg_sql_server_dbo__users')
+        rows:
+          - {email: ekollaschek2q@tuttocitta.it}
+          - {email: sdivers2p@msu.edu}
+          - {email: wheinecke2l@ebay.com}
+          - {email: fail_email}
+    expect:
+      rows:
+        - {email: ekollaschek2q@tuttocitta.it,    is_valid_email_address: true}
+        - {email: sdivers2p@msu.edu,    is_valid_email_address: true}
+        - {email: wheinecke2l@ebay.com,    is_valid_email_address: true}
+        - {email: fail_email,    is_valid_email_address: false}
+  - name: test_is_valid_phone_number
+    description: "Check if phone number is valid"
+    model: users_validation
+    given:
+      - input: ref('stg_sql_server_dbo__users')
+        rows:
+          - {phone_number: 831-155-1615}
+          - {phone_number: 728-793-1630}
+          - {phone_number: 980-177-3162}
+          - {phone_number: 123-456-789}
+    expect:
+        rows:
+          - {phone_number: 831-155-1615,    is_valid_phone_number: true}
+          - {phone_number: 728-793-1630,    is_valid_phone_number: true}
+          - {phone_number: 980-177-3162,    is_valid_phone_number: true}
+          - {phone_number: 123-456-789,    is_valid_phone_number: false}
+  - name: test_is_valid_first_name
+    description: "Check if first name is valid"
+    model: users_validation
+    given:
+      - input: ref('stg_sql_server_dbo__users')
+        rows:
+          - {first_name: Verina}
+          - {first_name: Jason}
+          - {first_name: Arthur}
+          - {first_name: ANDREW}
+    expect:
+      rows:
+        - {first_name: Verina,    is_valid_first_name: true}
+        - {first_name: Jason,    is_valid_first_name: true}
+        - {first_name: Arthur,    is_valid_first_name: true}
+        - {first_name: ANDREW,    is_valid_first_name: false}
+  - name: test_is_valid_last_name
+    description: "Check if last name is valid"
+    model: users_validation
+    given:
+      - input: ref('stg_sql_server_dbo__users')
+        rows:
+          - {last_name: Mcdonell}
+          - {last_name: Hargrave}
+          - {last_name: Bande}
+          - {last_name: JOHNson}
+    expect:
+      rows:
+        - {last_name: Mcdonell,    is_valid_last_name: true}
+        - {last_name: Hargrave,    is_valid_last_name: true}
+        - {last_name: Bande,    is_valid_last_name: true}
+        - {last_name: JOHNson,    is_valid_last_name: false}
