@@ -23,5 +23,11 @@ models:
       - name: date_load
         data_type: timestamp_tz
         description: ""
+  - name: stg_ejercicio_incremental
+    columns:
+      - name: _row
+      - name: month
+      - name: quantity
+      - name: _fivetran_synced
 
 #Añadir descripciones, tests y contratos aunque esto último tendría más sentido añadirlos en la capa gold.
