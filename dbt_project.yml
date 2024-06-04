@@ -36,7 +36,14 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  staging:
+  my_new_project:
+
     # Applies to all files under models/example/
-    sql_server_dbo:
+    dim_time:
+      materialized: table  # O usa "incremental" si prefieres
+
+    marts:
       +materialized: table
+      +database: "ALUMNO15DEV_GOLD_DB"
+      core:
+        +schema: core
