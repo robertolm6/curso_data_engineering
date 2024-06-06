@@ -16,8 +16,8 @@ renamed_casted AS (
         first_name,
         last_name,
         email,
-        min(created_at) as first_event_time_utc,
-        max(created_at) as last_event_time_utc,
+        min(created_at_utc) as first_event_time_utc,
+        max(created_at_utc) as last_event_time_utc,
         datediff(minute, first_event_time_utc, last_event_time_utc) as session_lenght_minutes,
         {%- for event_type in event_types   %}
         sum(case when event_type = '{{event_type}}' then 1 else 0 end) as {{event_type}}_amount

@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: sql_server_dbo
     description: ""
-    database: alumno15devbronzedb
+    database: "{{ env_var('DBT_ENVIRONMENTS') }}BRONZEDB"
     schema: sql_server_dbo
 
     quoting:
