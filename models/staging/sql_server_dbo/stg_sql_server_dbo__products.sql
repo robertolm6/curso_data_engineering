@@ -1,23 +1,30 @@
 with 
 
-source_products as (
+source as (
 
     select * from {{ source('sql_server_dbo', 'products') }}
 
 ),
 
-renamed_products as (
+renamed as (
 
     select
         product_id,
-        price,
+        price as price_dollar,
         name,
         inventory,
         _fivetran_deleted,
-        _fivetran_synced
+        {{set_to_utc('_fivetran_synced')}} as date_load_utc
 
-    from source_products
-
+    from source
+    union all
+    select 
+        md5('empty_product'),
+        0,
+        'empty_product',
+        0,
+        null,
+        null
 )
 
-select * from renamed_products
+select * from renamed

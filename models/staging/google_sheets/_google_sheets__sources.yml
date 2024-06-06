@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: google_sheets
     description: ""
-    database: alumno15devbronzedb
+    database: "{{ env_var('DBT_ENVIRONMENTS') }}BRONZEDB"
     schema: google_sheets
     tables:
       - name: budget

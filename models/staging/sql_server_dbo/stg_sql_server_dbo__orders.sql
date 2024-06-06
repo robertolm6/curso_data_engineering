@@ -27,11 +27,28 @@ renamed_orders as (
         order_total as order_total_dollars,
         delivered_at,
         tracking_id,
-        status,
+        md5(status) as order_status_id,
         _fivetran_deleted,
         _fivetran_synced
 
     from source_orders
+    union all
+    select 
+        md5('void_order'),
+        md5('unknown'),
+        0,
+        null,
+        null,
+        md5('no promo'),
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        md5('preparing'),
+        null,
+        null
 
 )
 
